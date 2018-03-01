@@ -5,5 +5,25 @@
   <%= @user.name %>
 </p>
 
+<p>
+<% if @user.avatar.attached? %>
+  <%= image_tag(@user.avatar) %>
+<% end %>
+</p>
+
+<% if @user.documents.attached? %>
+  <p>
+  <h2>Documents</h2>
+  <% @user.documents.each_with_index do |doc, i| %>
+    <p>
+    <%= link_to("Download doc##{i}", rails_blob_path(doc, disposition: "attachment")) %>
+    </p>
+    <p>
+    <%= link_to("Open doc##{i}", url_for(doc)) %>
+    </p>
+  <% end %>
+  </p>
+<% end %>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

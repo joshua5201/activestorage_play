@@ -16,6 +16,16 @@
     <%= form.text_field :name %>
   </div>
 
+  <div class="field">
+    <%= form.label :avatar %>
+    <%= form.file_field :avatar %>
+  </div>
+
+  <div class="field">
+    <%= form.label :documents %>
+    <%= form.file_field :documents, multiple: true %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
